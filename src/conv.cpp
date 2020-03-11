@@ -17,12 +17,12 @@ wchar_t* _conv_from_utf8(const char* s) {
 }
 
 wchar_t* _conv_from_932(const char* s) {
-	auto count = MultiByteToWideChar(932, MB_ERR_INVALID_CHARS, s, strlen(s), NULL, 0);
+	auto count = MultiByteToWideChar(936, MB_ERR_INVALID_CHARS, s, strlen(s), NULL, 0);
 	if (count == 0) {
 		return NULL;
 	}
 	auto dest = new wchar_t[count + 1];
-	auto err = MultiByteToWideChar(932, MB_ERR_INVALID_CHARS, s, strlen(s), dest, count);
+	auto err = MultiByteToWideChar(936, MB_ERR_INVALID_CHARS, s, strlen(s), dest, count);
 	if (err == 0) {
 		return NULL;
 	}
@@ -31,12 +31,12 @@ wchar_t* _conv_from_932(const char* s) {
 }
 
 char* _conv_to_932(const wchar_t* s) {
-	auto count = WideCharToMultiByte(932, 0, s, wcslen(s), NULL, 0, NULL, NULL);
+	auto count = WideCharToMultiByte(936, 0, s, wcslen(s), NULL, 0, NULL, NULL);
 	if (count == 0) {
 		return NULL;
 	}
 	auto dest = new char[count + 1];
-	auto err = WideCharToMultiByte(932, 0, s, wcslen(s), dest, count, NULL, NULL);
+	auto err = WideCharToMultiByte(936, 0, s, wcslen(s), dest, count, NULL, NULL);
 	if (err == 0) {
 		return NULL;
 	}
